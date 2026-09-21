@@ -8,12 +8,6 @@ TextureImporter:
   - first:
       213: 1896061272773073253
     second: GhostLeft_1
-  - first:
-      213: 2484360481625685292
-    second: GhostLeft_2
-  - first:
-      213: 5523036695951403709
-    second: GhostLeft_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -125,10 +119,10 @@ TextureImporter:
       name: GhostLeft_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 36
-        width: 15
-        height: 24
+        x: 3
+        y: 18
+        width: 10
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +141,10 @@ TextureImporter:
       name: GhostLeft_1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 38
-        width: 15
-        height: 24
+        x: 3
+        y: 1
+        width: 10
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,50 +155,6 @@ TextureImporter:
       bones: []
       spriteID: 569930c8ea9205a10800000000000000
       internalID: 1896061272773073253
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GhostLeft_2
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 4
-        width: 15
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c2d315102b83a7220800000000000000
-      internalID: 2484360481625685292
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GhostLeft_3
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 3
-        width: 15
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dba61a7dc94c5ac40800000000000000
-      internalID: 5523036695951403709
       vertices: []
       indices: 
       edges: []
@@ -225,8 +175,6 @@ TextureImporter:
     nameFileIdTable:
       GhostLeft_0: -2801592608032984428
       GhostLeft_1: 1896061272773073253
-      GhostLeft_2: 2484360481625685292
-      GhostLeft_3: 5523036695951403709
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

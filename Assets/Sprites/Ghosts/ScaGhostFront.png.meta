@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 6e7a22ea5e3976b4cb6ec5e2ea274512
+guid: 50b9b83fdabfac642b234226f9a5de60
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7537885613049193301
-    second: GhostScaredLeft_0
+      213: -8351428366307950311
+    second: ScaGhostFront_0
   - first:
-      213: 5687265692836052894
-    second: GhostScaredLeft_1
-  - first:
-      213: 784476171854664571
-    second: GhostScaredLeft_2
-  - first:
-      213: -363821962890043364
-    second: GhostScaredLeft_3
+      213: -1000325910840945616
+    second: ScaGhostFront_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GhostScaredLeft_0
+      name: ScaGhostFront_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 36
-        width: 15
-        height: 24
+        x: 3
+        y: 18
+        width: 10
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bacdcace8fc046790800000000000000
-      internalID: -7537885613049193301
+      spriteID: 911081b0624c91c80800000000000000
+      internalID: -8351428366307950311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GhostScaredLeft_1
+      name: ScaGhostFront_1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 38
-        width: 15
-        height: 24
+        x: 3
+        y: 3
+        width: 10
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,52 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e9f32c4e30a3dee40800000000000000
-      internalID: 5687265692836052894
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GhostScaredLeft_2
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 4
-        width: 15
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b73d7260ce403ea00800000000000000
-      internalID: 784476171854664571
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GhostScaredLeft_3
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 2
-        width: 15
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c1024743ad173faf0800000000000000
-      internalID: -363821962890043364
+      spriteID: 034d4b052e02e12f0800000000000000
+      internalID: -1000325910840945616
       vertices: []
       indices: 
       edges: []
@@ -223,10 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GhostScaredLeft_0: -7537885613049193301
-      GhostScaredLeft_1: 5687265692836052894
-      GhostScaredLeft_2: 784476171854664571
-      GhostScaredLeft_3: -363821962890043364
+      ScaGhostFront_0: -8351428366307950311
+      ScaGhostFront_1: -1000325910840945616
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
