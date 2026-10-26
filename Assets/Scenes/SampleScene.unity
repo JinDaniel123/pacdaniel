@@ -45094,6 +45094,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eafd4796895fc64096a72257020fac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  audioSource: {fileID: 1467898194}
+  Intro: {fileID: 8300000, guid: 815b16b3183498b46a3aef6aaa7e6630, type: 3}
+  GhostNormal: {fileID: 8300000, guid: 3f2b0c5ae95e7ac4cbabe04aa7d38342, type: 3}
 --- !u!82 &1467898194
 AudioSource:
   m_ObjectHideFlags: 0
