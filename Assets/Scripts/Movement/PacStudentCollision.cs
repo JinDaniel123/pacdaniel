@@ -7,29 +7,47 @@ public class PacStudentCollision : MonoBehaviour
         if (other.CompareTag("Pellet"))
         {
             GameManager.instance.AddScore(10);
+            GameManager.instance.PelletEaten();
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("PowerPellet"))
         {
             GameManager.instance.ActivatePowerPellet();
+            GameManager.instance.PelletEaten();
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("Cherry"))
         {
             GameManager.instance.AddScore(100);
             Destroy(other.gameObject);
-            FindFirstObjectByType<CherryController>().CherryEaten();
+
+            CherryController cherry = FindAnyObjectByType<CherryController>();
+            if (cherry != null) cherry.CherryEaten();
         }
         else if (other.CompareTag("Ghost"))
         {
-            GhostController ghost = other.GetComponent<GhostController>();
-            if (ghost.currentState == GhostController.GhostState.Scared || ghost.currentState == GhostController.GhostState.Recovering)
+            Debug.Log("1. PacStudent touched something tagged Ghost!");
+
+            GhostController ghost = other.GetComponentInParent<GhostController>();
+
+            if (ghost != null)
             {
-                GameManager.instance.EatGhost(ghost);
+                Debug.Log("2. Found GhostController! Ghost state is: " + ghost.currentState);
+
+                if (ghost.currentState == GhostController.GhostState.Normal)
+                {
+                    Debug.Log("3. Ghost is Normal. Killing Player.");
+                    GameManager.instance.PacStudentDied();
+                }
+                else if (ghost.currentState == GhostController.GhostState.Scared || ghost.currentState == GhostController.GhostState.Recovering)
+                {
+                    Debug.Log("3. Ghost is Scared. Eating Ghost.");
+                    GameManager.instance.EatGhost(ghost);
+                }
             }
-            else if (ghost.currentState == GhostController.GhostState.Normal)
+            else
             {
-                GameManager.instance.PacStudentDied();
+                Debug.LogError("ERROR: Touched a 'Ghost', but the GhostController script is missing from that object or its parents!");
             }
         }
     }

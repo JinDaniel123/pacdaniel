@@ -71,7 +71,12 @@ public class PacStudentController : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance != null && GameManager.instance.isGamePaused) return;
+        // If the game is paused (countdown or death), stop moving instantly
+        if (GameManager.instance != null && GameManager.instance.isGamePaused)
+        {
+            StopMovingEffects();
+            return;
+        }
 
         GatherInput();
 

@@ -7,7 +7,6 @@ public class AudioManagerController : MonoBehaviour
     public AudioClip MenuMusic;
     public AudioClip Intro;
     public AudioClip GhostNormal;
-
     public AudioClip GhostScared;
     public AudioClip GhostEatSound;
     public AudioClip DeathSound;
@@ -41,6 +40,14 @@ public class AudioManagerController : MonoBehaviour
         PlayNormalMusic();
     }
 
+    public void PlayIntroMusic()
+    {
+        audioSource.Stop();
+        audioSource.clip = Intro;
+        audioSource.loop = false;
+        audioSource.Play();
+    }
+
     public void PlayNormalMusic()
     {
         audioSource.Stop();
@@ -65,5 +72,10 @@ public class AudioManagerController : MonoBehaviour
     public void PlayDeathSound()
     {
         audioSource.PlayOneShot(DeathSound);
+    }
+
+    public void StopMusic()
+    {
+        audioSource.Stop();
     }
 }
