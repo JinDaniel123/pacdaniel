@@ -3,7 +3,7 @@ using UnityEngine;
 public class PacStudentController : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float moveSpeed = 5f; // 5 tiles per second
+    public float moveSpeed = 5f;
     private float lerpDuration;
 
     [Header("State Variables")]
@@ -15,27 +15,64 @@ public class PacStudentController : MonoBehaviour
     private float lerpTimer = 0f;
     private bool isLerping = false;
 
+    [Header("Teleporters")]
+    public Transform leftTeleportPoint;
+    public Transform rightTeleportPoint;
+
     [Header("Visuals & Audio")]
     public Animator animator;
     public AudioSource movementAudio;
+    public AudioClip movingClip;
+    public AudioClip eatingClip;
     public ParticleSystem dustParticles;
+
+    [Header("Wall Collision Effects")]
+    public ParticleSystem wallBumpParticles;
+    public AudioSource wallBumpAudio;
 
     [Header("Level Collision")]
     public LayerMask wallLayer;
+    public LayerMask pelletLayer;
 
     void Start()
     {
-        lerpDuration = 1f / moveSpeed;
+        if (leftTeleportPoint == null)
+        {
+            GameObject leftObj = GameObject.Find("LeftTeleportPoint");
+            if (leftObj != null) leftTeleportPoint = leftObj.transform;
+        }
 
+        if (rightTeleportPoint == null)
+        {
+            GameObject rightObj = GameObject.Find("RightTeleportPoint");
+            if (rightObj != null) rightTeleportPoint = rightObj.transform;
+        }
+
+        if (dustParticles == null)
+        {
+            GameObject dustObj = GameObject.Find("DustParticles");
+            if (dustObj != null) dustParticles = dustObj.GetComponent<ParticleSystem>();
+        }
+
+        lerpDuration = 1f / moveSpeed;
+        ResetMovement();
+    }
+
+    public void ResetMovement()
+    {
         lastInput = Vector2.right;
         currentInput = Vector2.right;
-
         startPosition = transform.position;
         targetPosition = transform.position;
+        isLerping = false;
+        lerpTimer = 0f;
+        StopMovingEffects();
     }
 
     void Update()
     {
+        if (GameManager.instance != null && GameManager.instance.isGamePaused) return;
+
         GatherInput();
 
         if (!isLerping)
@@ -55,6 +92,21 @@ public class PacStudentController : MonoBehaviour
                 isLerping = false;
                 transform.position = targetPosition;
                 StopMovingEffects();
+
+                if (leftTeleportPoint != null && rightTeleportPoint != null)
+                {
+                    if (transform.position.x <= leftTeleportPoint.position.x)
+                    {
+                        transform.position = new Vector2(rightTeleportPoint.position.x, transform.position.y);
+                    }
+                    else if (transform.position.x >= rightTeleportPoint.position.x)
+                    {
+                        transform.position = new Vector2(leftTeleportPoint.position.x, transform.position.y);
+                    }
+                }
+
+                startPosition = transform.position;
+                targetPosition = transform.position;
             }
         }
     }
@@ -86,7 +138,12 @@ public class PacStudentController : MonoBehaviour
             return;
         }
 
-        StopMovingEffects();
+        if (currentInput != Vector2.zero)
+        {
+            PlayWallBumpEffect();
+            currentInput = Vector2.zero;
+            StopMovingEffects();
+        }
     }
 
     private void StartMoving()
@@ -114,7 +171,21 @@ public class PacStudentController : MonoBehaviour
             animator.SetFloat("MoveX", currentInput.x);
             animator.SetFloat("MoveY", currentInput.y);
         }
-        if (movementAudio != null && !movementAudio.isPlaying) movementAudio.Play();
+
+        Collider2D pelletHit = Physics2D.OverlapCircle(targetPosition, 0.2f, pelletLayer);
+        if (movementAudio != null)
+        {
+            if (pelletHit != null && eatingClip != null)
+            {
+                movementAudio.clip = eatingClip;
+            }
+            else if (movingClip != null)
+            {
+                movementAudio.clip = movingClip;
+            }
+            if (!movementAudio.isPlaying) movementAudio.Play();
+        }
+
         if (dustParticles != null && !dustParticles.isPlaying) dustParticles.Play();
     }
 
@@ -123,5 +194,11 @@ public class PacStudentController : MonoBehaviour
         if (animator != null) animator.SetBool("IsMoving", false);
         if (movementAudio != null) movementAudio.Stop();
         if (dustParticles != null) dustParticles.Stop();
+    }
+
+    private void PlayWallBumpEffect()
+    {
+        if (wallBumpParticles != null) wallBumpParticles.Play();
+        if (wallBumpAudio != null) wallBumpAudio.Play();
     }
 }
